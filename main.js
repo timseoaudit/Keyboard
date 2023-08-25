@@ -1,29 +1,31 @@
 // The keys and notes variables store the piano keys
 const keys = ['c-key', 'd-key', 'e-key', 'f-key', 'g-key', 'a-key', 'b-key', 'high-c-key', 'c-sharp-key', 'd-sharp-key', 'f-sharp-key', 'g-sharp-key', 'a-sharp-key'];
+//assign keys to key array
 const notes = [];
-keys.forEach(function(key){
-  notes.push(document.getElementById(key));
+//empty array that is used to fill in keys as notes 
+keys.forEach(function(key){ //for each key in keys array
+  notes.push(document.getElementById(key)); //push the key into the notes array
 })
 
-// Write named functions that change the color of the keys below
+//function that changes the color of the key when clicked
 const keyPlay = event => {
   event.target.style.backgroundColor = 'gray';
 };
-
+//function that changes the color of the key when released
 const keyReturn = event => {
   event.target.style.backgroundColor = '';
 };
-// Write a named function with event handler properties
+// function that assigns the keyPlay and keyReturn functions to the notes array
 let keyStroke = note => {
-  note.onmousedown = function() {
+  note.onmousedown = function(event) {
     keyPlay(event);
   };
-  note.onmouseup = function() {
+  note.onmouseup = function(event) {
   keyReturn(event);
   };
 }
 
-// Write a loop that runs the array elements through the function
+//loop that assigns the keyStroke function to each note in the notes array
 notes.forEach(keyStroke);
 
 // These variables store the buttons that progress the user through the lyrics
@@ -40,7 +42,7 @@ nextTwo.hidden = true;
 nextThree.hidden = true;
 startOver.hidden= true;
 
-// Write anonymous event handler property and function for the first progress button
+// handler function for the first progress button
 nextOne.onclick = function() {
   nextTwo.hidden = false;
   nextOne.hidden = true;
@@ -48,7 +50,7 @@ nextOne.onclick = function() {
   document.getElementById('letter-note-six').innerHTML = 'C';
 }
 
-// Write anonymous event handler property and function for the second progress button
+// handler function for the second progress button
 nextTwo.onclick = function() {
   nextThree.hidden = false;
   nextTwo.hidden = true;
@@ -61,7 +63,7 @@ nextTwo.onclick = function() {
   document.getElementById('letter-note-six').innerHTML = 'B';
 }
 
-// Write anonymous event handler property and function for the third progress button
+// handler function for the third progress button
 nextThree.onclick = function () {
     startOver.hidden = false;
     nextThree.hidden = true;
